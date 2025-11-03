@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import { ThemeMode } from 'config';
 
 // icons
-import { ShoppingCart, ArrowDown } from '@wandersonalwes/iconsax-react';
+import { Call } from '@wandersonalwes/iconsax-react';
 
 // assets
 const figmaLight = '/assets/images/landing/figma-light.png';
@@ -56,30 +56,17 @@ export default function AboutUs() {
         </Grid>
         <Grid size={12}>
           <Grid container spacing={1.5}>
-            <Grid sx={{ textAlign: 'right' }} size={{ xs: 6 }}>
+            <Grid sx={{ textAlign: 'left', display: 'flex', alignItems: 'center', justifyContent: 'center' }} size={{ xs: 12 }}>
               <Button
                 component={Link}
                 target="_blank"
-                href="https://codedthemes.com/item/able-pro-free-figma-ui-kit/"
-                size="large"
-                color="secondary"
-                variant="outlined"
-                startIcon={<ArrowDown />}
-              >
-                Free Figma
-              </Button>
-            </Grid>
-            <Grid sx={{ textAlign: 'left' }} size={{ xs: 6 }}>
-              <Button
-                component={Link}
-                target="_blank"
-                href="https://codedthemes.com/item/able-pro-figma-ui-kit/"
+                href="https://wa.me/0895611861777?text=Halo,%20saya%20ingin%20bertanya%20terkait%20automation,%20apakah%20bisa?"
                 size="large"
                 color="primary"
                 variant="contained"
-                startIcon={<ShoppingCart />}
+                startIcon={<Call />}
               >
-                Pro Figma
+                Hubungi Kami
               </Button>
             </Grid>
           </Grid>

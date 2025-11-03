@@ -118,7 +118,7 @@ export default function ComboPage() {
                         <Grid size={12}>
                           <Button
                             variant="contained"
-                            color="secondary"
+                            color="primary"
                             size="large"
                             startIcon={<ExportSquare />}
                             component={Link}
@@ -126,9 +126,9 @@ export default function ComboPage() {
                             target="_blank"
                             sx={(theme) => ({
                               fontWeight: 500,
-                              bgcolor: 'secondary.light',
-                              color: 'secondary.darker',
-                              ...theme.applyStyles('light', { '&:hover': { color: 'secondary.lighter' } })
+                              bgcolor: 'primary.main',
+                              color: 'white',
+                              ...theme.applyStyles('light', { '&:hover': { color: 'primary.lighter' } })
                             })}
                           >
                             {tech.label}

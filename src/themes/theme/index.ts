@@ -17,6 +17,7 @@ import { PaletteThemeProps } from 'types/theme';
 // ==============================|| PRESET THEME - THEME SELECTOR ||============================== //
 
 export default function Theme(presetColor: PresetColor, mode: ThemeMode): PaletteThemeProps {
+  console.log({ mode: presetColor });
   switch (presetColor) {
     case 'theme1':
       return Theme1(mode);
