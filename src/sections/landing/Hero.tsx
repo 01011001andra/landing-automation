@@ -71,7 +71,7 @@ export default function HeroPage() {
                       color: 'white'
                     }}
                   >
-                    Explore One of the{' '}
+                    Transformasi Bisnismu Menggunakan{' '}
                     <Typography
                       variant="h1"
                       component="span"
@@ -85,38 +85,40 @@ export default function HeroPage() {
                         '@keyframes move-bg': { '100%': { backgroundPosition: '400% 0' } }
                       }}
                     >
-                      Featured Dashboard
-                    </Typography>{' '}
-                    Template in Themeforest
+                      AI Automation
+                    </Typography>
                   </Typography>
                 </motion.div>
               </Grid>
-              <Grid container size={12} sx={{ justifyContent: 'center' }}>
-                <Grid size={8}>
+              <Grid container size={12} sx={{ justifyContent: 'center', width: '100%' }}>
+                <Grid size={12}>
                   <motion.div
+                    className="w-full"
                     initial={{ opacity: 0, translateY: 550 }}
                     animate={{ opacity: 1, translateY: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 150,
-                      damping: 30,
-                      delay: 0.2
-                    }}
+                    transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.2 }}
                   >
                     <Typography
                       variant="h6"
+                      noWrap
                       sx={{
                         fontSize: { xs: '0.875rem', md: '1rem' },
                         fontWeight: 400,
-                        lineHeight: { xs: 1.4, md: 1.4 }
+                        lineHeight: 1.4,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        textAlign: 'center', // biar estetis di tengah
+                        width: '100%'
                       }}
+                      className="text-gray-400"
                     >
-                      Able Pro is the one of the Featured admin dashboard template in Envato Marketplace and used by over 5.5K+ Customers
-                      worldwide.
+                      Ubah proses manual jadi otomatis, Turunkan biaya operasional, Maksimalkan profit.
                     </Typography>
                   </motion.div>
                 </Grid>
               </Grid>
+
               <Grid size={12}>
                 <motion.div
                   initial={{ opacity: 0, translateY: 550 }}
@@ -139,92 +141,19 @@ export default function HeroPage() {
                           variant="outlined"
                           className="text-white border-white"
                         >
-                          Explore Components
+                          Lihat Demo
                         </Button>
                       </AnimateButton>
                     </Grid>
                     <Grid>
                       <AnimateButton>
                         <Button component={Link} href="/login" target="_blank" size="large" color="primary" variant="contained">
-                          Live Preview
+                          Tanya AI
                         </Button>
                       </AnimateButton>
                     </Grid>
                   </Grid>
                 </motion.div>
-              </Grid>
-              <Grid size={12}>
-                <motion.div
-                  initial={{ opacity: 0, translateY: 550 }}
-                  animate={{ opacity: 1, translateY: 0 }}
-                  transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.6 }}
-                >
-                  <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
-                    <Grid
-                      sx={{
-                        position: 'relative',
-                        '&:after': {
-                          content: '""',
-                          position: 'absolute',
-                          height: 30,
-                          bottom: 10,
-                          left: 'auto',
-                          right: '-12px',
-                          width: '1px',
-                          bgcolor: 'divider'
-                        }
-                      }}
-                    >
-                      <Rating name="read-only" value={4.5} size="small" readOnly />
-                      <Typography variant="h4">
-                        4.7/5
-                        <Box component="span" sx={{ fontSize: '75%', fontWeight: 400, margin: 0.625, color: 'text.secondary' }}>
-                          Ratings
-                        </Box>
-                      </Typography>
-                    </Grid>
-                    <Grid>
-                      <Typography variant="h5">
-                        <Box
-                          component="span"
-                          sx={{
-                            fontSize: '75%',
-                            fontWeight: 400,
-                            color: 'text.secondary'
-                          }}
-                        >
-                          Sales
-                        </Box>
-                      </Typography>
-                      <Typography variant="h4">5.5K+</Typography>
-                    </Grid>
-                  </Grid>
-                </motion.div>
-              </Grid>
-              <Grid container size={12} sx={{ justifyContent: 'center' }}>
-                <Grid size={8}>
-                  <motion.div
-                    initial={{ opacity: 0, translateY: 550 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 150,
-                      damping: 30,
-                      delay: 0.2
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                        fontWeight: 400,
-                        lineHeight: { xs: 1.4, md: 1.4 }
-                      }}
-                    >
-                      - Click Below Icon to Preview Each Tech Demos -
-                    </Typography>
-                  </motion.div>
-                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -255,7 +184,8 @@ export default function HeroPage() {
                 borderRight: `1px solid black`,
                 '&:first-of-type': { borderLeft: `1px solid black` },
                 '& img': { padding: 1.3 }
-              }
+              },
+              overflowY: 'hidden'
             })}
           >
             {techBottom}

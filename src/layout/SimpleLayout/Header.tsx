@@ -30,6 +30,7 @@ import { ThemeDirection } from 'config';
 
 // assets
 import { HambergerMenu, Minus } from '@wandersonalwes/iconsax-react';
+import useShowOnScrollUp from '@/hooks/useShownOnScrollUp';
 
 interface ElevationScrollProps {
   layout: string;
@@ -49,7 +50,7 @@ function ElevationScroll({ children, window }: ElevationScrollProps) {
   return cloneElement(children, {
     style: {
       boxShadow: trigger ? '0 8px 6px -10px rgba(0, 0, 0, 0.5)' : 'none',
-      backgroundColor: trigger ? alpha(theme.palette.background.default, 0.8) : alpha(theme.palette.background.default, 0.1)
+      backgroundColor: trigger ? alpha(theme.palette.background.default, 0.1) : alpha(theme.palette.background.default, 0.1)
     }
   });
 }
@@ -63,10 +64,10 @@ interface Props {
 export default function Header({ layout = 'landing', ...others }: Props) {
   const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState<boolean>(false);
-
   const [openDrawer, setOpenDrawer] = useState(false);
-
   const { menuMaster } = useGetMenuMaster();
+
+  const showHeader = useShowOnScrollUp();
 
   /** Method called on multiple components with different event types */
   const drawerToggler = (open: boolean) => (event: any) => {
@@ -80,10 +81,20 @@ export default function Header({ layout = 'landing', ...others }: Props) {
     <ElevationScroll layout={layout} {...others}>
       <AppBar
         sx={(theme) => ({
+          position: 'fixed', // pastikan fixed
+          top: 0,
+          left: 0,
+          right: 0,
           bgcolor: alpha(theme.palette.background.default, 0.1),
           backdropFilter: 'blur(8px)',
           color: 'text.primary',
-          boxShadow: 'none'
+          boxShadow: 'none',
+
+          // ==== animasi hide/show berdasar arah scroll ====
+          transform: showHeader ? 'translateY(0)' : 'translateY(-110%)',
+          transition: 'transform 260ms ease-in-out',
+          willChange: 'transform',
+          pointerEvents: showHeader ? 'auto' : 'none'
         })}
       >
         <Container maxWidth="xl" disableGutters={downMD}>
@@ -118,10 +129,10 @@ export default function Header({ layout = 'landing', ...others }: Props) {
                 target="_blank"
                 underline="none"
               >
-                Dashboard
+                Beranda
               </Links>
               <Links className="header-link" color="secondary.main" component={Link} href="#" underline="none">
-                Components
+                Tentang Kami
               </Links>
               <Links
                 className="header-link"
@@ -130,7 +141,7 @@ export default function Header({ layout = 'landing', ...others }: Props) {
                 target="_blank"
                 underline="none"
               >
-                Documentation
+                Demo
               </Links>
               <Links
                 className="header-link"

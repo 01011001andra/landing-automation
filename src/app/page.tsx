@@ -20,7 +20,7 @@ export default function Landing() {
       <SimpleLayout>
         <Hero />
         <AboutUs />
-        <Apps />
+        {/* <Apps /> */}
         <Combo />
         <Testimonial />
         <Subscribe />
