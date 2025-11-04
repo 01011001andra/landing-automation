@@ -8,17 +8,17 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-// third-party
+// pihak ketiga
 import { motion } from 'framer-motion';
 
-// project-imports
+// impor proyek
 import Logo from 'components/logo';
 
-// assets
+// ikon sosial
 import { Dribbble, Youtube } from '@wandersonalwes/iconsax-react';
 import GithubIcon from '../../../public/assets/third-party/github';
 
-// link - custom style
+// gaya tautan footer
 const FooterLink = styled(Link)(({ theme }) => ({
   color: theme.palette.text.primary,
   '&:hover, &:active': {
@@ -26,95 +26,129 @@ const FooterLink = styled(Link)(({ theme }) => ({
   }
 }));
 
-type showProps = {
+type ShowProps = {
   isFull?: boolean;
 };
 
-// ==============================|| LANDING - FOOTER PAGE ||============================== //
+// ==============================|| FOOTER HALAMAN ||============================== //
 
-export default function FooterBlock({ isFull }: showProps) {
-  const linkSX = { color: 'text.secondary', fontWeight: 400, opacity: '0.6', cursor: 'pointer', '&:hover': { opacity: '1' } };
+export default function FooterBlock({ isFull }: ShowProps) {
+  const linkSX = {
+    color: 'text.secondary',
+    fontWeight: 400,
+    opacity: '0.8',
+    cursor: 'pointer',
+    '&:hover': { opacity: 1 }
+  };
 
   return (
     <>
-      <Box sx={{ pt: isFull ? 5 : 10, pb: 10, bgcolor: 'secondary.200', borderColor: 'divider' }}>
+      <Box sx={{ pt: isFull ? 5 : 10, pb: 10, bgcolor: 'white', borderColor: 'divider' }}>
         <Container>
           <Grid container spacing={2}>
+            {/* Kolom Kiri: Logo + Deskripsi Singkat */}
             <Grid size={{ xs: 12, md: 4 }}>
               <motion.div
                 initial={{ opacity: 0, translateY: 550 }}
                 animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30
-                }}
+                transition={{ type: 'spring', stiffness: 150, damping: 30 }}
               >
                 <Grid container spacing={2}>
                   <Grid size={12}>
                     <Logo to="/" />
                   </Grid>
                   <Grid size={12}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 400, maxWidth: 320 }}>
-                      Phoenixcoded has gained the trust of over 5.5K+ customers since 2015, thanks to our commitment to delivering
-                      high-quality products. Our experienced team players are responsible for managing Able Pro.
+                    <Typography variant="subtitle1" sx={{ fontWeight: 400, maxWidth: 360 }}>
+                      Kami membantu tim mengubah proses manual menjadi otomasi berbasis AI—lebih rapi, cepat, dan mudah diukur. Fokus pada
+                      hasil; biarkan pekerjaan berulang ditangani sistem.
                     </Typography>
                   </Grid>
                 </Grid>
               </motion.div>
             </Grid>
+
+            {/* Kolom Kanan: Navigasi */}
             <Grid size={{ xs: 12, md: 8 }}>
               <Grid container spacing={{ xs: 5, md: 2 }}>
-                <Grid size={{ xs: 6, sm: 4 }}>
+                {/* Perusahaan */}
+                <Grid size={{ xs: 6, sm: 3 }}>
                   <Stack sx={{ gap: 3 }}>
-                    <Typography variant="h5">Company</Typography>
-                    <Stack sx={{ gap: { xs: 1.5, md: 2.5 } }}>
-                      <FooterLink href="https://1.envato.market/xk3bQd" target="_blank" underline="none">
-                        Profile
+                    <Typography variant="h5">Perusahaan</Typography>
+                    <Stack sx={{ gap: { xs: 1.5, md: 2.0 } }}>
+                      <FooterLink href="/tentang-kami" underline="none">
+                        Tentang Kami
                       </FooterLink>
-                      <FooterLink href="https://1.envato.market/Qyre4x" target="_blank" underline="none">
-                        Portfolio
+                      <FooterLink href="/portofolio" underline="none">
+                        Portofolio
                       </FooterLink>
-                      <FooterLink href="https://1.envato.market/Py9k4X" target="_blank" underline="none">
-                        Follow Us
+                      <FooterLink href="/tim" underline="none">
+                        Tim
                       </FooterLink>
-                      <FooterLink href="https://phoenixcoded.net" target="_blank" underline="none">
-                        Website
+                      <FooterLink href="/kontak" underline="none">
+                        Kontak
                       </FooterLink>
                     </Stack>
                   </Stack>
                 </Grid>
-                <Grid size={{ xs: 6, sm: 4 }}>
+
+                {/* Layanan */}
+                <Grid size={{ xs: 6, sm: 3 }}>
                   <Stack sx={{ gap: 3 }}>
-                    <Typography variant="h5">Help & Support</Typography>
-                    <Stack sx={{ gap: { xs: 1.5, md: 2.5 } }}>
-                      <FooterLink href="https://phoenixcoded.gitbook.io/able-pro" target="_blank" underline="none">
-                        Documentation
+                    <Typography variant="h5">Layanan</Typography>
+                    <Stack sx={{ gap: { xs: 1.5, md: 2.0 } }}>
+                      <FooterLink href="/demo/invoice-otomatis" underline="none">
+                        Invoice Otomatis
                       </FooterLink>
-                      <FooterLink href="https://phoenixcoded.authordesk.app/" target="_blank" underline="none">
-                        Feature Request
+                      <FooterLink href="/demo/bot-cs" underline="none">
+                        Bot Layanan Pelanggan
                       </FooterLink>
-                      <FooterLink href="https://phoenixcoded.gitbook.io/able-pro/v/react/roadmap/" target="_blank" underline="none">
-                        RoadMap
+                      <FooterLink href="/demo/e-do-ttd" underline="none">
+                        e-DO & Tanda Tangan
                       </FooterLink>
-                      <FooterLink href="https://phoenixcoded.authordesk.app/" target="_blank" underline="none">
-                        Support
+                      <FooterLink href="/demo/workflow-operasional" underline="none">
+                        Orkestrasi Workflow
                       </FooterLink>
-                      <FooterLink href="https://themeforest.net/user/phoenixcoded#contact" target="_blank" underline="none">
-                        Email Us
+                      <FooterLink href="/demo/monitoring-kpi" underline="none">
+                        Monitoring KPI
                       </FooterLink>
                     </Stack>
                   </Stack>
                 </Grid>
-                <Grid size={{ xs: 6, sm: 4 }}>
+
+                {/* Bantuan */}
+                <Grid size={{ xs: 6, sm: 3 }}>
                   <Stack sx={{ gap: 3 }}>
-                    <Typography variant="h5">Useful Resources</Typography>
-                    <Stack sx={{ gap: { xs: 1.5, md: 2.5 } }}>
-                      <FooterLink href="https://themeforest.net/page/item_support_policy" target="_blank" underline="none">
-                        Support Policy
+                    <Typography variant="h5">Bantuan</Typography>
+                    <Stack sx={{ gap: { xs: 1.5, md: 2.0 } }}>
+                      <FooterLink href="/dokumen" underline="none">
+                        Dokumentasi
                       </FooterLink>
-                      <FooterLink href="https://themeforest.net/licenses/standard" target="_blank" underline="none">
-                        Licenses Term
+                      <FooterLink href="/peta-jalan" underline="none">
+                        Peta Jalan
+                      </FooterLink>
+                      <FooterLink href="/minta-fitur" underline="none">
+                        Ajukan Fitur
+                      </FooterLink>
+                      <FooterLink href="/pusat-bantuan" underline="none">
+                        Pusat Bantuan
+                      </FooterLink>
+                    </Stack>
+                  </Stack>
+                </Grid>
+
+                {/* Kebijakan */}
+                <Grid size={{ xs: 6, sm: 3 }}>
+                  <Stack sx={{ gap: 3 }}>
+                    <Typography variant="h5">Kebijakan</Typography>
+                    <Stack sx={{ gap: { xs: 1.5, md: 2.0 } }}>
+                      <FooterLink href="/kebijakan-privasi" underline="none">
+                        Kebijakan Privasi
+                      </FooterLink>
+                      <FooterLink href="/syarat-layanan" underline="none">
+                        Syarat Layanan
+                      </FooterLink>
+                      <FooterLink href="/status" underline="none">
+                        Status Sistem
                       </FooterLink>
                     </Stack>
                   </Stack>
@@ -124,37 +158,39 @@ export default function FooterBlock({ isFull }: showProps) {
           </Grid>
         </Container>
       </Box>
-      <Box sx={{ py: 2.4, borderTop: '1px solid', borderColor: 'divider', bgcolor: 'secondary.200' }}>
+
+      {/* Bar Bawah */}
+      <Box sx={{ py: 2.4, borderTop: '1px solid', borderColor: 'divider', bgcolor: 'white' }}>
         <Container>
           <Grid container spacing={2} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, sm: 8 }}>
               <Typography>
-                © Handcrafted by Team{' '}
-                <Link href="https://themeforest.net/user/phoenixcoded" target="_blank" underline="none">
-                  {' '}
-                  Phoenixcoded
+                © Dibangun dengan sepenuh hati oleh Tim{' '}
+                <Link href="/" underline="none">
+                  MusyanA.I
                 </Link>
               </Typography>
             </Grid>
+
             <Grid size={{ xs: 12, sm: 4 }}>
               <Grid container spacing={2} sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
                 <Grid>
-                  <Tooltip title="Github">
-                    <Link href="https://github.com/phoenixcoded" underline="none" target="_blank" sx={linkSX}>
+                  <Tooltip title="GitHub">
+                    <Link href="https://github.com/" underline="none" target="_blank" sx={linkSX}>
                       <GithubIcon size={20} />
                     </Link>
                   </Tooltip>
                 </Grid>
                 <Grid>
                   <Tooltip title="Dribbble">
-                    <Link href="https://dribbble.com/Phoenixcoded" underline="none" target="_blank" sx={linkSX}>
+                    <Link href="https://dribbble.com/" underline="none" target="_blank" sx={linkSX}>
                       <Dribbble variant="Bold" size={20} />
                     </Link>
                   </Tooltip>
                 </Grid>
                 <Grid>
-                  <Tooltip title="Youtube">
-                    <Link href="https://www.youtube.com/@phoenixcoded" underline="none" target="_blank" sx={linkSX}>
+                  <Tooltip title="YouTube">
+                    <Link href="https://www.youtube.com/" underline="none" target="_blank" sx={linkSX}>
                       <Youtube variant="Bold" size={20} />
                     </Link>
                   </Tooltip>

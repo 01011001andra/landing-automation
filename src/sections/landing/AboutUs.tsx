@@ -41,8 +41,9 @@ export default function AboutUs() {
                 </Grid>
                 <Grid size={12}>
                   <Typography variant="body1" className="text-gray-400">
-                    Optimize your workflow with 100% Auto Layout, variables, smart variants, and WCAG accessibility. Enjoy super-smart
-                    global colors, typography, and effects styles + variables, crafted for seamless design efficiency!
+                    Kami membantu bisnis mengubah proses manual menjadi alur kerja otomatis berbasis AI. Hasilnya: biaya turun, kecepatan
+                    naik, keputusan lebih akurat. Fokus kami pada solusi nyata—dari integrasi sistem, bot operasional, hingga dashboard
+                    realtime—agar timmu bisa fokus bertumbuh.
                   </Typography>
                 </Grid>
               </Grid>
