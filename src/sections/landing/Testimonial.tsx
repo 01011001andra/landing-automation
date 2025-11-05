@@ -1,7 +1,7 @@
 'use client';
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme, alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid2';
 import Stack from '@mui/material/Stack';
@@ -20,8 +20,6 @@ import { ThemeDirection } from 'config';
 
 // aset (opsional untuk mode testimoni)
 import Avatar from 'components/@extended/Avatar';
-const Avatar1 = '/assets/images/users/avatar-6.png';
-const Avatar2 = '/assets/images/users/avatar-1.png';
 
 // iconify
 import { Icon } from '@iconify/react';
@@ -44,19 +42,76 @@ type OutcomeItem = {
 
 // ============================ Komponen Kecil =========================== //
 function KartuTestimoni({ item }: { item: TestiItem }) {
+  const theme = useTheme();
+  const cardBg = alpha(theme.palette.common.black, 0.88);
+  const stroke = 'rgba(255,255,255,0.10)';
+  const subtle = alpha('#fff', 0.82);
+  const muted = alpha('#fff', 0.56);
+
   return (
-    <MainCard sx={{ width: { xs: 300, md: 420 }, my: 0.75, mx: 1.5 }}>
+    <MainCard
+      sx={{
+        width: { xs: 300, md: 420 },
+        my: 0.75,
+        mx: 1.5,
+        position: 'relative',
+        bgcolor: cardBg,
+        color: '#fff',
+        border: `1px solid ${stroke}`,
+        borderRadius: 3,
+        boxShadow: '0 10px 30px rgba(0,0,0,.55), inset 0 1px rgba(255,255,255,.05)',
+        backdropFilter: 'blur(8px)',
+        transition: 'transform .25s ease, box-shadow .25s ease, border-color .25s ease',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          borderColor: 'rgba(255,255,255,0.18)',
+          boxShadow: '0 16px 48px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.06)'
+        },
+        '::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: 12,
+          pointerEvents: 'none',
+          background: 'linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 20%)'
+        }
+      }}
+    >
       <Stack direction="row" sx={{ gap: 2, alignItems: 'flex-start' }}>
-        {item.image ? <Avatar alt={item.name} size="lg" src={item.image} /> : null}
-        <Stack sx={{ gap: 0.5 }}>
-          {item.rating ? <Rating value={item.rating} precision={0.5} readOnly size="small" /> : null}
-          <Typography sx={{ color: 'text.primary' }}>{item.text}</Typography>
+        {item.image ? (
+          <Avatar
+            alt={item.name}
+            size="lg"
+            src={item.image}
+            sx={{
+              border: '1px solid rgba(255,255,255,.24)',
+              boxShadow: '0 6px 18px rgba(0,0,0,.45)'
+            }}
+          />
+        ) : null}
+
+        <Stack sx={{ gap: 0.75 }}>
+          {item.rating ? (
+            <Rating
+              value={item.rating}
+              precision={0.5}
+              readOnly
+              size="small"
+              sx={{
+                '& .MuiRating-iconFilled': { color: theme.palette.warning.main },
+                '& .MuiRating-iconEmpty': { color: alpha('#fff', 0.24) }
+              }}
+            />
+          ) : null}
+
+          <Typography sx={{ color: subtle, lineHeight: 1.55 }}>{item.text}</Typography>
+
           <Typography>
-            <Typography component="span" variant="caption" sx={{ fontWeight: 600 }}>
+            <Typography component="span" variant="caption" sx={{ fontWeight: 700, color: '#fff' }}>
               {item.name}
             </Typography>
             {' · '}
-            <Typography component="span" variant="caption" sx={{ color: 'text.secondary' }}>
+            <Typography component="span" variant="caption" sx={{ color: muted }}>
               {item.designation}
             </Typography>
           </Typography>
@@ -67,8 +122,39 @@ function KartuTestimoni({ item }: { item: TestiItem }) {
 }
 
 function KartuDampak({ item }: { item: OutcomeItem }) {
+  const stroke = 'gray';
+  const subtle = alpha('#fff', 0.9);
+  const muted = alpha('#fff', 0.6);
+
   return (
-    <MainCard sx={{ width: { xs: 300, md: 380 }, my: 0.75, mx: 1.5, borderStyle: 'solid', borderColor: 'divider' }}>
+    <MainCard
+      sx={{
+        width: { xs: 300, md: 380 },
+        my: 0.75,
+        mx: 1.5,
+        position: 'relative',
+        border: `1px solid ${stroke}`,
+        bgcolor: 'white',
+        color: 'black',
+        borderRadius: 3,
+        boxShadow: '0 10px 30px rgba(0,0,0,.55), inset 0 1px rgba(255,255,255,.05)',
+        backdropFilter: 'blur(8px)',
+        transition: 'transform .25s ease, box-shadow .25s ease, border-color .25s ease',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          borderColor: 'rgba(255,255,255,0.18)',
+          boxShadow: '0 16px 48px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.06)'
+        },
+        '::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: 12,
+          pointerEvents: 'none',
+          background: 'linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 22%)'
+        }
+      }}
+    >
       <Stack sx={{ gap: 1 }}>
         {/* Ikon + konteks */}
         <Stack direction="row" alignItems="center" sx={{ gap: 1 }}>
@@ -79,24 +165,26 @@ function KartuDampak({ item }: { item: OutcomeItem }) {
               borderRadius: '10px',
               display: 'grid',
               placeItems: 'center',
-              bgcolor: 'action.hover'
+              bgcolor: alpha('#fff', 0.06),
+              border: '1px solid rgba(255,255,255,.12)'
             }}
             aria-hidden
           >
             <Icon icon={item.icon} width={20} height={20} />
           </Box>
+
           {item.context ? (
-            <Typography variant="overline" sx={{ letterSpacing: 0.6, color: 'text.secondary' }}>
+            <Typography className="text-black" variant="overline" sx={{ letterSpacing: 0.6, color: muted, textTransform: 'none' }}>
               {item.context}
             </Typography>
           ) : null}
         </Stack>
 
         {/* Judul + Dampak */}
-        <Typography variant="h6" sx={{ lineHeight: 1.25 }}>
+        <Typography className="text-black" variant="h6" sx={{ lineHeight: 1.25, color: subtle }}>
           {item.title}
         </Typography>
-        <Typography sx={{ color: 'text.secondary' }}>{item.impact}</Typography>
+        <Typography className="text-black">{item.impact}</Typography>
       </Stack>
     </MainCard>
   );
@@ -107,23 +195,7 @@ export default function BagianBuktiSosial() {
   const theme = useTheme();
 
   // Biarkan kosong sebelum ada testimoni asli
-  const testimonials: TestiItem[] = [
-    // Contoh jika nanti sudah ada:
-    // {
-    //   image: Avatar1,
-    //   text: '“Proses dari pesanan sampai pengiriman jadi mulus setelah otomasi diterapkan.”',
-    //   name: 'Andra',
-    //   designation: 'Pemilik Toko Daring',
-    //   rating: 5
-    // },
-    // {
-    //   image: Avatar2,
-    //   text: '“Integrasi kanal layanan rapi, tim bisa fokus ke prioritas yang lebih penting.”',
-    //   name: 'Nadia',
-    //   designation: 'Kepala Operasional',
-    //   rating: 4.5
-    // }
-  ];
+  const testimonials: TestiItem[] = [];
 
   // Sorotan dampak — tanpa angka/persen + ikon Iconify
   const outcomes: OutcomeItem[] = [
@@ -166,20 +238,48 @@ export default function BagianBuktiSosial() {
   ];
 
   const adaTestimoni = testimonials.length > 0;
+  const para = alpha('#fff', 0.64);
 
   return (
-    <>
+    <Box
+      sx={{
+        position: 'relative',
+        overflow: 'hidden',
+        py: { xs: 8, md: 12 },
+        // Latar gelap + glow
+        backgroundColor: '#0b0b0b',
+        backgroundImage: `
+          radial-gradient(900px 600px at 10% -10%, rgba(99,102,241,.12), transparent 60%),
+          radial-gradient(700px 500px at 100% 10%, rgba(236,72,153,.08), transparent 55%),
+          radial-gradient(700px 500px at 0% 100%, rgba(34,197,94,.06), transparent 55%)
+        `,
+        // Grid halus di atas
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '24px 24px, 24px 24px',
+          maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0, rgba(0,0,0,0.95) 60%, rgba(0,0,0,1) 100%)'
+        }
+      }}
+      // className="-mb-44"
+    >
       {/* Kepala halaman */}
-      <Box sx={{ mt: { md: 15, xs: 2.5 } }}>
+      <Box sx={{ mt: { md: 8, xs: 0 } }}>
         <Container>
           <Grid container spacing={2} sx={{ justifyContent: 'center', textAlign: 'center', mb: 4, pt: 3 }}>
             <Grid size={12}>
               <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
+                initial={{ opacity: 0, translateY: 50 }}
                 animate={{ opacity: 1, translateY: 0 }}
-                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.2 }}
+                transition={{ type: 'spring', stiffness: 150, damping: 24, delay: 0.1 }}
               >
-                <Typography variant="h2" className="text-white">
+                <Typography variant="h2" sx={{ color: '#fff' }}>
                   {adaTestimoni ? (
                     <>
                       Suara Pengguna{' '}
@@ -201,11 +301,11 @@ export default function BagianBuktiSosial() {
 
             <Grid size={{ xs: 12, md: 8 }}>
               <motion.div
-                initial={{ opacity: 0, translateY: 550 }}
+                initial={{ opacity: 0, translateY: 50 }}
                 animate={{ opacity: 1, translateY: 0 }}
-                transition={{ type: 'spring', stiffness: 150, damping: 30, delay: 0.35 }}
+                transition={{ type: 'spring', stiffness: 150, damping: 24, delay: 0.2 }}
               >
-                <Typography className="text-gray-400">
+                <Typography sx={{ color: para }}>
                   {adaTestimoni
                     ? 'Ringkasan pengalaman pengguna setelah penerapan otomasi pada berbagai konteks operasi.'
                     : 'Perubahan yang biasanya terjadi setelah otomasi: apa yang berubah dan mengapa berdampak pada operasional.'}
@@ -217,7 +317,7 @@ export default function BagianBuktiSosial() {
       </Box>
 
       {/* Isi */}
-      <Box sx={{ mb: { md: 10, xs: 2.5 } }}>
+      <Box>
         <Grid container spacing={4}>
           {adaTestimoni ? (
             <>
@@ -270,6 +370,6 @@ export default function BagianBuktiSosial() {
           )}
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 }

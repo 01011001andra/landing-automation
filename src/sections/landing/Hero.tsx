@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CardMedia from '@mui/material/CardMedia';
 import Links from '@mui/material/Link';
-import Rating from '@mui/material/Rating';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
