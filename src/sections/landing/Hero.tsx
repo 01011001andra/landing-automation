@@ -166,10 +166,7 @@ export default function HeroPage() {
             right: 0,
             alignItems: 'center',
             justifyContent: 'center',
-            bgcolor: 'black',
-            borderTop: '1px solid',
-            borderBottom: '1px solid',
-            borderColor: 'grey'
+            bgcolor: 'black'
           }}
         >
           <Grid

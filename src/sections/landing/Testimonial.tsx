@@ -245,27 +245,8 @@ export default function BagianBuktiSosial() {
       sx={{
         position: 'relative',
         overflow: 'hidden',
-        py: { xs: 8, md: 12 },
+        pb: { xs: 8, md: 12 }
         // Latar gelap + glow
-        backgroundColor: '#0b0b0b',
-        backgroundImage: `
-          radial-gradient(900px 600px at 10% -10%, rgba(99,102,241,.12), transparent 60%),
-          radial-gradient(700px 500px at 100% 10%, rgba(236,72,153,.08), transparent 55%),
-          radial-gradient(700px 500px at 0% 100%, rgba(34,197,94,.06), transparent 55%)
-        `,
-        // Grid halus di atas
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '24px 24px, 24px 24px',
-          maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0, rgba(0,0,0,0.95) 60%, rgba(0,0,0,1) 100%)'
-        }
       }}
       // className="-mb-44"
     >
